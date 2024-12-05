@@ -1,5 +1,5 @@
-from django.core import mail
 from pytest_bdd import step
+from django.core import mail
 
 
 @step('hoy es el "{date}"')
@@ -10,9 +10,9 @@ def freeeze(freezer, date):
 
 @step("veo que se han enviado emails con los siguientes parametros")
 @step("I see that emails have been sent with the following parameters")
-def step_mpl(context):
-    context.test.assertEqual(len(mail.outbox), len(context.table.rows))
-    for row in context.table.rows:
+def step_mpl(datatable):
+    datatable.test.assertEqual(len(mail.outbox), len(datatable.table.rows))
+    for row in datatable.table.rows:
         mail_send = False
         for email in mail.outbox:
             mail_found = True

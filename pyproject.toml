@@ -86,7 +86,7 @@ skip_glob = ["venv/**"]
 source = ["explicit_bdd"]
 
 [tool.coverage.report]
-omit = ["*/migrations_*/*"]
+omit = ["tests/*"]
 show_missing = true
 fail_under = 95
 
