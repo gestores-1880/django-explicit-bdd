@@ -1,5 +1,6 @@
 import textwrap
 
+
 def _test_freezer(pytester):
     pytester.makefile(
         ".feature",
