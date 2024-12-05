@@ -17,10 +17,8 @@ classifiers = [
     "Development Status :: 5 - Production/Stable",
     "Environment :: Console",
     "Intended Audience :: Developers",
+    "Framework :: Pytest",
     "Framework :: Django",
-    "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",
-    "Framework :: Django :: 5.1",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.9",
@@ -60,6 +58,9 @@ test = [
 [project.urls]
 homepage = "https://github.com/gestores-1880/django-explicit-bdd"
 
+[project.entry-points.pytest11]
+myproject = "explicit_bdd.plugin"
+
 [tool.setuptools.packages.find]
 exclude = ["tests*", "docs*"]
 
@@ -98,6 +99,7 @@ DJANGO_SETTINGS_MODULE = "settings"
 pythonpath = "tests"
 addopts = "--pdbcls=IPython.terminal.debugger:TerminalPdb"
 python_files = ["test_*.py"]
+bdd_features_base_dir = "tests"
 
 # Custom markers for pytest
 markers = [
