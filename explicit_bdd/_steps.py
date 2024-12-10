@@ -1,9 +1,9 @@
 from django.core import mail
-from pytest_bdd import step
+from pytest_bdd import step, parsers
 
 
-@step('hoy es el "{date}"')
-@step('today is "{date}"')
+@step(parsers.re(r'hoy es el "(?P<date>[^\"]+)"'))
+@step(parsers.re(r'today is "(?P<date>[^\"]+)"'))
 def freeeze(freezer, date):
     freezer.move_to(date)
 

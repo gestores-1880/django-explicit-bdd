@@ -1,4 +1,4 @@
 Feature: Parent
     Scenario: Parenting is easy
-        Given I have a parent fixture
+        Given today is "2000-01-01"
         And I have an overridable fixture
