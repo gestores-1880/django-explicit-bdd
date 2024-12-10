@@ -1,20 +1,18 @@
-from behave import *
 from django.core import mail
-from freezegun import freeze_time
+from pytest_bdd import step, parsers
 
 
-@step('hoy es el "([^"]+)"')
-@step('today is "([^"]+)"')
-def freeeze(context, date):
-    freezer = freeze_time(date, ignore=["behave.runner"])
-    freezer.start()
+@step(parsers.re(r'hoy es el "(?P<date>[^\"]+)"'))
+@step(parsers.re(r'today is "(?P<date>[^\"]+)"'))
+def freeeze(freezer, date):
+    freezer.move_to(date)
 
 
 @step("veo que se han enviado emails con los siguientes parametros")
 @step("I see that emails have been sent with the following parameters")
-def step_mpl(context):
-    context.test.assertEqual(len(mail.outbox), len(context.table.rows))
-    for row in context.table.rows:
+def step_mpl(datatable):
+    datatable.test.assertEqual(len(mail.outbox), len(datatable.table.rows))
+    for row in datatable.table.rows:
         mail_send = False
         for email in mail.outbox:
             mail_found = True
@@ -29,5 +27,5 @@ def step_mpl(context):
 
 @step("veo que no se ha enviado email")
 @step("I see that no email has been sent")
-def step_mpl(context):
+def step_mpl():
     assert len(mail.outbox) == 0

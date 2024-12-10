@@ -7,3 +7,6 @@ dist
 .idea/*
 django_explicit_behave.egg-info/*
 *.egg-info
+.pytest_cache
+.coverage
+.ruff_cache
