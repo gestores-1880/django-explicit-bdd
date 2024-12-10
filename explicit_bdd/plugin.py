@@ -3,7 +3,7 @@
 
 # bdd.scenarios('.')
 
-from . import _steps
+# from . import _steps
 
 # def pytest_bdd_before_scenario(request, feature, scenario):
     # """Hooking into pytest-bdd-defined hooks to capture feature name and scenario + its steps"""
